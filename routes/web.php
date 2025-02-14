@@ -19,3 +19,4 @@ Route::get('/lokasi', function () {
 });
 Route::get('/lokasi/getLokasi', [LokasiController::class, 'loadLokasi']);
 Route::post('/lokasi', [LokasiController::class, 'store']);
+Route::get('/lokasi/{id}', [LokasiController::class, 'show']);

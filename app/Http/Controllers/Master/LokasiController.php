@@ -36,4 +36,11 @@ class LokasiController extends Controller
         ]);
         return response()->json(['success' => true, 'message' => 'Data Berhasil Disimpan']);
     }
+
+    public function show($id)
+    {
+        $lokasi = Lokasi::findOrFail($id);
+
+        return response()->json(['success' => true, 'message' => 'Data Berhasil Ditemukan', 'Data' => $lokasi]);
+    }
 }

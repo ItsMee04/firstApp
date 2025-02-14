@@ -10,11 +10,13 @@
                     <div class="col-sm-6">
                         <h1><b>DATA LOKASI</b></h1>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <button type="button" class="btn btn-outline-primary btn-block btn-tambahLokasi"><i
-                                    class="fa fa-plus"></i>
-                                Tambah Lokasi</button>
+                            <li class="breadcrumb-item">
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-tambahLokasi"><i
+                                        class="fa fa-plus"></i>
+                                    Tambah Lokasi</button>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -60,7 +62,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Large Modal</h4>
+                    <h4 class="modal-title">TAMBAH LOKASI</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -69,13 +71,47 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Lokasi Proyek</label>
+                            <label for="exampleInputEmail1">LOKASI PROYEK</label>
                             <input type="text" class="form-control" name="lokasi" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <div class="modal fade" id="mdEditLokasi">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">EDIT LOKASI</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="storeEditLokasi" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">ID</label>
+                            <input type="text" class="form-control" name="id" id="editid" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Lokasi Proyek</label>
+                            <input type="text" class="form-control" name="lokasi" id="editlokasi" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                        <button type="submit" class="btn btn-primary">SIMPAN</button>
                     </div>
                 </form>
             </div>
