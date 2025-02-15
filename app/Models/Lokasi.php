@@ -14,6 +14,7 @@ class Lokasi extends Model
     protected $table    = 'lokasi';
     protected $fillable =
     [
+        'id',
         'lokasi',
         'status'
     ];

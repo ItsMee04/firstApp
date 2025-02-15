@@ -53,6 +53,9 @@ $(document).ready(function () {
                 {
                     data: "lokasi",
                     className: "text-center",
+                    render: function (data, type, row) {
+                        return `<b>${data}</b>`; // Menjadikan teks lokasi tebal
+                    },
                 },
                 {
                     data: "status",
@@ -159,23 +162,8 @@ $(document).ready(function () {
                 $("#editid").val(response.Data.id);
                 $("#editlokasi").val(response.Data.lokasi);
 
-                // // Update preview gambar
-                // let imageSrc = response.data.icon
-                //     ? `/storage/icon/${response.data.icon}`
-                //     : `/assets/img/notfound.png`;
-                // $("#editPreview img").attr("src", imageSrc);
-
-                // // Update dropdown status sesuai dengan data yang diterima
-                // // Cek status dan pilih option yang sesuai menggunakan Select2
-                // if (response.data.status == 2) {
-                //     $("#editstatus").val(2).trigger("change"); // Pilih option dengan value=2 dan update Select2
-                // } else {
-                //     $("#editstatus").val(1).trigger("change"); // Pilih option dengan value=1 dan update Select2
-                // }
-
                 // Tampilkan modal edit
                 $("#mdEditLokasi").modal("show");
-                console.log(response.Data.id)
             },
             error: function () {
                 Toast.fire({
@@ -190,5 +178,59 @@ $(document).ready(function () {
     $("#mdEditLokasi").on("hidden.bs.modal", function () {
         // Reset form input (termasuk gambar dan status)
         $("#storeEditLokasi")[0].reset();
+    });
+
+    //kirim data ke server <i class=""></i>
+    $("#storeEditLokasi").on("submit", function (event) {
+        event.preventDefault(); // Mencegah form submit secara default
+
+        // Buat objek FormData
+        const formData = new FormData(this);
+        // Ambil ID dari form
+        const idLokasi = formData.get("id"); // Mengambil nilai input dengan name="id"
+
+        $.ajax({
+            url: `/lokasi/${idLokasi}`, // Endpoint Laravel untuk menyimpan pegawai
+            type: "POST",
+            data: formData,
+            processData: false, // Agar data tidak diubah menjadi string
+            contentType: false, // Agar header Content-Type otomatis disesuaikan
+            success: function (response) {
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                });
+
+                Toast.fire({
+                    icon: "success",
+                    title: response.message,
+                });
+
+                $("#mdEditLokasi").modal("hide"); // Tutup modal
+                $("#storeEditLokasi")[0].reset(); // Reset form
+                lokasiTable.ajax.reload(); // Reload data dari server
+            },
+            error: function (xhr) {
+                // Tampilkan pesan error dari server
+                const errors = xhr.responseJSON.errors;
+                if (errors) {
+                    let errorMessage = "";
+                    for (let key in errors) {
+                        errorMessage += `${errors[key][0]}\n`;
+                    }
+                    Toast.fire({
+                        icon: "error",
+                        title: errorMessage,
+                    });
+                } else {
+                    Toast.fire({
+                        icon: "error",
+                        title: response.message,
+                    });
+                }
+            },
+        });
     });
 });

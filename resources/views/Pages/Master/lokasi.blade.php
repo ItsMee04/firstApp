@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item">
                                 <button type="button" class="btn btn-outline-primary btn-sm btn-tambahLokasi"><i
                                         class="fa fa-plus"></i>
-                                    Tambah Lokasi</button>
+                                    TAMBAH LOKASI</button>
                             </li>
                         </ol>
                     </div>
@@ -35,9 +35,9 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Lokasi Proyek</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>LOKASI PROYEK</th>
+                                            <th>STATUS</th>
+                                            <th>ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,8 +61,8 @@
     <div class="modal fade" id="mdTambahLokasi">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">TAMBAH LOKASI</h4>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title"><b>TAMBAH LOKASI</b></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -76,8 +76,8 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
-                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><b>CLOSE</b></button>
+                        <button type="submit" class="btn btn-primary"><b>SIMPAN</b></button>
                     </div>
                 </form>
             </div>
@@ -91,8 +91,8 @@
     <div class="modal fade" id="mdEditLokasi">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">EDIT LOKASI</h4>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title"><b>EDIT LOKASI</b></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -110,8 +110,8 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
-                        <button type="submit" class="btn btn-primary">SIMPAN</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><b>CLOSE</b></button>
+                        <button type="submit" class="btn btn-primary"><b>SIMPAN</b></button>
                     </div>
                 </form>
             </div>

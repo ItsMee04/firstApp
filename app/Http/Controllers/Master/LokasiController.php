@@ -43,4 +43,21 @@ class LokasiController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Data Berhasil Ditemukan', 'Data' => $lokasi]);
     }
+
+    public function update(Request $request, $id)
+    {
+        $messages = [
+            'required' => ':attribute wajib di isi !!!',
+        ];
+
+        $credentials = $request->validate([
+            'lokasi'           =>  'required',
+        ], $messages);
+
+        $lokasi = Lokasi::findOrFail($id);
+
+        $lokasi->update($request->all());
+
+        return response()->json(['success' => true, 'message' => 'Data Diskon Berhasil Disimpan']);
+    }
 }
