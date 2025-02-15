@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         Toast.fire({
             icon: "success",
-            title: "Data Lokasi Berhasil Di Refresh",
+            title: "Data Lokasi Proyek Berhasil Di Refresh",
         });
     });
 
@@ -233,4 +233,53 @@ $(document).ready(function () {
             },
         });
     });
+
+    $(document).on("click", ".btndelete", function () {
+        let id = $(this).data("id");
+
+        Swal.fire({
+            title: "Apakah Anda yakin?",
+            text: "Data yang dihapus tidak dapat dikembalikan!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Ya, hapus!",
+            cancelButtonText: "Batal",
+            customClass: {
+                popup: 'animated bounceIn', // Animasi masuk
+                confirmButton: 'btn btn-danger',
+                cancelButton: 'btn btn-secondary'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: `/lokasi/delete/${id}`, // Ganti dengan endpoint yang sesuai
+                    type: "DELETE",
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") // Ambil token CSRF dari meta tag
+                    },
+                    success: function (response) {
+                        Swal.fire({
+                            title: "Terhapus!",
+                            text: "Data berhasil dihapus.",
+                            icon: "success",
+                            customClass: {
+                                popup: 'animated fadeOut' // Animasi keluar
+                            }
+                        });
+                        lokasiTable.ajax.reload(); // Reload DataTable setelah penghapusan
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: "Gagal!",
+                            text: "Terjadi kesalahan, coba lagi nanti.",
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        });
+    });
+
 });

@@ -15,9 +15,9 @@ class LokasiController extends Controller
 
     public function loadLokasi()
     {
-        $lokasi = Lokasi::all();
+        $lokasi = Lokasi::where('status', 1)->get();
 
-        return response()->json(['success' => true, 'message' => 'Data Berhasil Ditemukan', 'Data' => $lokasi]);
+        return response()->json(['success' => true, 'message' => 'Data Lokasi Proyek Berhasil Ditemukan', 'Data' => $lokasi]);
     }
 
     public function store(Request $request)
@@ -34,14 +34,14 @@ class LokasiController extends Controller
             'lokasi' => $request->lokasi,
             'status' => 1,
         ]);
-        return response()->json(['success' => true, 'message' => 'Data Berhasil Disimpan']);
+        return response()->json(['success' => true, 'message' => 'Data Lokasi Proyek Berhasil Disimpan']);
     }
 
     public function show($id)
     {
         $lokasi = Lokasi::findOrFail($id);
 
-        return response()->json(['success' => true, 'message' => 'Data Berhasil Ditemukan', 'Data' => $lokasi]);
+        return response()->json(['success' => true, 'message' => 'Data Lokasi Proyek Berhasil Ditemukan', 'Data' => $lokasi]);
     }
 
     public function update(Request $request, $id)
@@ -58,6 +58,20 @@ class LokasiController extends Controller
 
         $lokasi->update($request->all());
 
-        return response()->json(['success' => true, 'message' => 'Data Diskon Berhasil Disimpan']);
+        return response()->json(['success' => true, 'message' => 'Data Lokasi Proyek Berhasil Disimpan']);
+    }
+
+    public function delete($id)
+    {
+        $lokasi = Lokasi::where('id', $id)->first();
+
+        if ($lokasi) {
+            Lokasi::where('id', $id)
+                ->update([
+                    'status' => 0,
+                ]);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Data Lokasi Proyek Berhasil Dihapus']);
     }
 }

@@ -21,3 +21,4 @@ Route::get('/lokasi/getLokasi', [LokasiController::class, 'loadLokasi']);
 Route::post('/lokasi', [LokasiController::class, 'store']);
 Route::get('/lokasi/{id}', [LokasiController::class, 'show']);
 Route::post('/lokasi/{id}', [LokasiController::class, 'update']);
+Route::delete('/lokasi/delete/{id}', [LokasiController::class, 'delete']);
