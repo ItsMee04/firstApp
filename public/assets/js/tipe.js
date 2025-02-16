@@ -20,7 +20,7 @@ $(document).ready(function () {
 
         Toast.fire({
             icon: "success",
-            title: "Data Tipe Proyek Berhasil Di Refresh",
+            title: "Data Tipe Berhasil Di Refresh",
         });
     });
 

@@ -69,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a href="/blok" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Blok</p>
                             </a>

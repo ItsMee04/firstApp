@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Master\BlokController;
 use App\Http\Controllers\Master\LokasiController;
 use App\Http\Controllers\Master\TipeController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,8 @@ Route::post('/tipe', [TipeController::class, 'store']);
 Route::get('/tipe/{id}', [TipeController::class, 'show']);
 Route::post('/tipe/{id}', [TipeController::class, 'update']);
 Route::delete('/tipe/delete/{id}', [TipeController::class, 'delete']);
+
+Route::get('/blok', function () {
+    return view('Pages.Master.blok');
+});
+Route::get('/blok/getBlok', [BlokController::class, 'getBlok']);
