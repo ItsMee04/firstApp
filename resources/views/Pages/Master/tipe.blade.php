@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Lokasi')
+@section('title', 'Tipe')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">
-                                <button type="button" class="btn btn-outline-primary btn-sm btn-tambahLokasi"><i
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-tambahTipe"><i
                                         class="fa fa-plus"></i>
                                     TAMBAH TIPE</button>
                             </li>
@@ -72,8 +72,13 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">LOKASI PROYEK</label>
-                            <input type="text" class="form-control" name="lokasi" required>
+                            <label>LOKASI PROYEK</label>
+                            <select class="form-control select2bs4" style="width: 100%;" name="lokasi" id="lokasi">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">TIPE</label>
+                            <input type="text" class="form-control" name="tipe" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -106,8 +111,13 @@
                             <input type="text" class="form-control" name="id" id="editid" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Lokasi Proyek</label>
-                            <input type="text" class="form-control" name="lokasi" id="editlokasi" required>
+                            <label>LOKASI PROYEK</label>
+                            <select class="form-control select2bs4" style="width: 100%;" name="lokasi" id="editlokasi">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">TIPE</label>
+                            <input type="text" class="form-control" name="tipe" id="edittipe" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
