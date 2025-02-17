@@ -15,6 +15,12 @@ class TipeController extends Controller
         return response()->json(['success' => true, 'message' => 'Data Tipe Berhasil Ditemukan', 'Data' => $tipe]);
     }
 
+    public function getTipeByLokasi($id)
+    {
+        $tipe = Tipe::with(['lokasi'])->where('status', 1)->where('lokasi_id', $id)->get();
+        return response()->json(['success' => true, 'message' => 'Data Tipe Berhasil Ditemukan', 'Data' => $tipe]);
+    }
+
     public function store(Request $request)
     {
         $messages = [
@@ -30,7 +36,7 @@ class TipeController extends Controller
             'tipe'      => $request->tipe,
             'status'    => 1,
         ]);
-        return response()->json(['success' => true, 'message' => 'Data Lokasi Proyek Berhasil Disimpan']);
+        return response()->json(['success' => true, 'message' => 'Data Tipe Berhasil Disimpan']);
     }
 
     public function show($id)
@@ -72,6 +78,6 @@ class TipeController extends Controller
                 ]);
         }
 
-        return response()->json(['success' => true, 'message' => 'Data Tipe Proyek Berhasil Dihapus']);
+        return response()->json(['success' => true, 'message' => 'Data Tipe Berhasil Dihapus']);
     }
 }

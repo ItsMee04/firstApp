@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Lokasi')
+@section('title', 'Sub Kontraktor')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -8,14 +8,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><b>DATA LOKASI</b></h1>
+                        <h1><b>DATA SUB KONTRAKTOR</b></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">
-                                <button type="button" class="btn btn-outline-primary btn-sm btn-tambahLokasi"><i
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-tambahSubkontraktor"><i
                                         class="fa fa-plus"></i>
-                                    TAMBAH LOKASI</button>
+                                    TAMBAH SUB KONTRAKTOR</button>
                             </li>
                         </ol>
                     </div>
@@ -31,11 +31,11 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="tableLokasi" class="table table-bordered table-hover">
+                                <table id="tableSubkontraktor" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>LOKASI PROYEK</th>
+                                            <th>SUB KONTRAKTOR</th>
                                             <th>STATUS</th>
                                             <th>ACTION</th>
                                         </tr>
@@ -58,21 +58,21 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <div class="modal fade" id="mdTambahLokasi">
+    <div class="modal fade" id="mdTambahSubkontraktor">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title"><b>TAMBAH LOKASI</b></h4>
+                    <h4 class="modal-title"><b>TAMBAH SUB KONTRAKTOR</b></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="storeLokasi" method="POST" enctype="multipart/form-data">
+                <form id="storeSubkontraktor" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">LOKASI PROYEK</label>
-                            <input type="text" class="form-control" name="lokasi" required>
+                            <label for="exampleInputEmail1">SUB KONTRAKTOR</label>
+                            <input type="text" class="form-control" name="subkontraktor" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -88,16 +88,16 @@
     <!-- /.modal -->
 
 
-    <div class="modal fade" id="mdEditLokasi">
+    <div class="modal fade" id="mdEditSubkontraktor">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title"><b>EDIT LOKASI</b></h4>
+                    <h4 class="modal-title"><b>EDIT SUB KONTRAKTOR</b></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="storeEditLokasi" method="POST" enctype="multipart/form-data">
+                <form id="storeEditSubkontraktor" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -105,8 +105,8 @@
                             <input type="text" class="form-control" name="id" id="editid" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">LOKASI PROYEK</label>
-                            <input type="text" class="form-control" name="lokasi" id="editlokasi" required>
+                            <label for="exampleInputEmail1">SUB KONTRAKTOR</label>
+                            <input type="text" class="form-control" name="subkontraktor" id="editsubkontraktor" required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -123,5 +123,5 @@
 
     <!-- jQuery -->
     <script src="{{ asset('assets') }}/plugins/jquery/jquery.min.js"></script>
-    <script src="{{ asset('assets') }}/js/lokasi.js"></script>
+    <script src="{{ asset('assets') }}/js/subkontraktor.js"></script>
 @endsection
