@@ -85,15 +85,44 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a href="/role" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Hak Akses</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/jabatan" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Jabatan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="./index3.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Setting Absensi</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Management User
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/pegawai" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pegawai</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/users" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Users</p>
                             </a>
                         </li>
                     </ul>

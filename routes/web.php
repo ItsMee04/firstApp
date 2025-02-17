@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Management\PegawaiController;
 use App\Http\Controllers\Master\BlokController;
+use App\Http\Controllers\Master\JabatanController;
 use App\Http\Controllers\Master\LokasiController;
 use App\Http\Controllers\Master\RekeningController;
+use App\Http\Controllers\Master\RoleController;
 use App\Http\Controllers\Master\SubkontraktorController;
 use App\Http\Controllers\Master\TipeController;
 use Illuminate\Support\Facades\Route;
@@ -62,3 +65,28 @@ Route::get('/subkontraktor/getSubkontraktor', [SubkontraktorController::class, '
 Route::post('/subkontraktor', [SubkontraktorController::class, 'store']);
 Route::get('/subkontraktor/{id}', [SubkontraktorController::class, 'show']);
 Route::post('/subkontraktor/{id}', [SubkontraktorController::class, 'update']);
+Route::delete('/subkontraktor/delete/{id}', [SubkontraktorController::class, 'delete']);
+
+Route::get('/role', function () {
+    return view('Pages.Master.role');
+});
+Route::get('/role/getRole', [RoleController::class, 'getRole']);
+Route::post('/role', [RoleController::class, 'store']);
+Route::get('/role/{id}', [RoleController::class, 'show']);
+Route::post('/role/{id}', [RoleController::class, 'update']);
+Route::delete('/role/delete/{id}', [RoleController::class, 'delete']);
+
+Route::get('/jabatan', function () {
+    return view('Pages.Master.jabatan');
+});
+Route::get('/jabatan/getJabatan', [JabatanController::class, 'getJabatan']);
+Route::post('/jabatan', [JabatanController::class, 'store']);
+Route::get('/jabatan/{id}', [JabatanController::class, 'show']);
+Route::post('/jabatan/{id}', [JabatanController::class, 'update']);
+Route::delete('/jabatan/delete/{id}', [JabatanController::class, 'delete']);
+
+
+Route::get('/pegawai', function () {
+    return view('Pages.Management.pegawai');
+});
+Route::get('/pegawai/getPegawai', [PegawaiController::class, 'getPegawai']);

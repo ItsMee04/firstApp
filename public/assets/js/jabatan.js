@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    loadSubkontraktor();
+$(document).ready(function () {
+    loadJabatan();
     resetFieldTutupModalTambah()
     resetFieldTutupModalEdit()
 
@@ -15,8 +15,8 @@ $(document).ready(function(){
 
     //ketika menekan tombol refresh
     $(document).on("click", "#btnRefresh", function () {
-        if (tableKontraktor) {
-            tableKontraktor.ajax.reload(); // Reload data dari server
+        if (tableJabatan) {
+            tableJabatan.ajax.reload(); // Reload data dari server
         }
         var Toast = Swal.mixin({
             toast: true,
@@ -27,13 +27,13 @@ $(document).ready(function(){
 
         Toast.fire({
             icon: "success",
-            title: "Data Sub Kontraktor Berhasil Di Refresh",
+            title: "Data Jabatan Berhasil Di Refresh",
         });
     });
 
     //funsi untuk memuat data subkontraktor
-    function loadSubkontraktor() {
-        tableKontraktor = $("#tableSubkontraktor").DataTable({
+    function loadJabatan() {
+        tableJabatan = $("#tableJabatan").DataTable({
             paging: true,
             lengthChange: false,
             searching: true,
@@ -42,7 +42,7 @@ $(document).ready(function(){
             autoWidth: false,
             responsive: true,
             ajax: {
-                url: `/subkontraktor/getSubkontraktor`, // Ganti dengan URL endpoint server Anda
+                url: `/jabatan/getJabatan`, // Ganti dengan URL endpoint server Anda
                 type: "GET", // Metode HTTP (GET/POST)
                 dataSrc: "Data", // Jalur data di response JSON
             },
@@ -56,7 +56,7 @@ $(document).ready(function(){
                     orderable: false,
                 },
                 {
-                    data: "subkontraktor",
+                    data: "jabatan",
                     className: "text-center",
                     render: function (data, type, row) {
                         return `<b>${data}</b>`; // Menjadikan teks lokasi tebal
@@ -94,7 +94,7 @@ $(document).ready(function(){
             },
             initComplete: function () {
                 // Tambahkan tombol refresh ke dalam header tabel
-                $("#tableSubkontraktor_wrapper .dataTables_filter").append(`
+                $("#tableJabatan_wrapper .dataTables_filter").append(`
                 <button id="btnRefresh" class="btn btn-primary btn-sm ml-2">
                     <i class="fa fa-sync"></i> Refresh
                 </button>
@@ -103,28 +103,28 @@ $(document).ready(function(){
         });
     }
 
-    //ketika menekan tombol tambah subkontraktor
-    $(".btn-tambahSubkontraktor").on("click", function () {
-        $("#mdTambahSubkontraktor").modal("show");
+    //ketika menekan tombol tambah jabatan
+    $(".btn-tambahJabatan").on("click", function () {
+        $("#mdTambahJabatan").modal("show");
     });
 
     // Ketika modal ditutup, reset semua field
     function resetFieldTutupModalTambah() {
-        $("#mdTambahSubkontraktor").on("hidden.bs.modal", function () {
+        $("#mdTambahJabatan").on("hidden.bs.modal", function () {
             // Reset form input (termasuk gambar dan status)
-            $("#storeSubkontraktor")[0].reset();
+            $("#storeJabatan")[0].reset();
         });
     }
 
     //kirim data ke server
-    $("#storeSubkontraktor").on("submit", function (event) {
+    $("#storeJabatan").on("submit", function (event) {
         event.preventDefault(); // Mencegah form submit secara default
         // Ambil elemen input file
 
         // Buat objek FormData
         const formData = new FormData(this);
         $.ajax({
-            url: "/subkontraktor", // Endpoint Laravel untuk menyimpan pegawai
+            url: "/jabatan", // Endpoint Laravel untuk menyimpan pegawai
             type: "POST",
             data: formData,
             processData: false, // Agar data tidak diubah menjadi string
@@ -142,9 +142,9 @@ $(document).ready(function(){
                     title: response.message,
                 });
 
-                $("#mdTambahSubkontraktor").modal("hide"); // Tutup modal
+                $("#mdTambahJabatan").modal("hide"); // Tutup modal
                 resetFieldTutupModalTambah();
-                tableKontraktor.ajax.reload(); // Reload data dari server
+                tableJabatan.ajax.reload(); // Reload data dari server
             },
             error: function (xhr) {
                 // Tampilkan pesan error dari server
@@ -170,25 +170,25 @@ $(document).ready(function(){
 
     //ketika button edit di tekan
     $(document).on("click", ".btnedit", function () {
-        const subkontraktorID = $(this).data("id");
+        const jabatanID = $(this).data("id");
 
         $.ajax({
-            url: `/subkontraktor/${subkontraktorID}`,
+            url: `/jabatan/${jabatanID}`,
             type: "GET",
             success: function (response) {
                 const data = response.Data;
 
                 // Set ID & Blok ke Form
                 $("#editid").val(data.id);
-                $("#editsubkontraktor").val(data.subkontraktor);
+                $("#editjabatan").val(data.jabatan);
 
                 // Tampilkan Modal Edit
-                $("#mdEditSubkontraktor").modal("show");
+                $("#mdEditJabatan").modal("show");
             },
             error: function () {
                 Toast.fire({
                     icon: "error",
-                    title: "Tidak dapat mengambil data blok.",
+                    title: "Tidak dapat mengambil data jabatan.",
                 });
             },
         });
@@ -196,24 +196,24 @@ $(document).ready(function(){
 
     // Ketika modal ditutup, reset semua field
     function resetFieldTutupModalEdit() {
-        $("#mdEditSubkontraktor").on("hidden.bs.modal", function () {
+        $("#mdEditJabatan").on("hidden.bs.modal", function () {
             // Reset dropdown lokasi jika perlu
             // Reset form input (termasuk gambar dan status)
-            $("#storeEditSubkontraktor")[0].reset();
+            $("#storeEditJabatan")[0].reset();
         });
     }
 
-    //kirim data ke server <i class=""></i>
-    $("#storeEditSubkontraktor").on("submit", function (event) {
+    //kirim data ke server
+    $("#storeEditJabatan").on("submit", function (event) {
         event.preventDefault(); // Mencegah form submit secara default
 
         // Buat objek FormData
         const formData = new FormData(this);
         // Ambil ID dari form
-        const idSubkontraktor = formData.get("id"); // Mengambil nilai input dengan name="id"
+        const idJabatan = formData.get("id"); // Mengambil nilai input dengan name="id"
 
         $.ajax({
-            url: `/subkontraktor/${idSubkontraktor}`, // Endpoint Laravel untuk menyimpan pegawai
+            url: `/jabatan/${idJabatan}`, // Endpoint Laravel untuk menyimpan pegawai
             type: "POST",
             data: formData,
             processData: false, // Agar data tidak diubah menjadi string
@@ -231,9 +231,9 @@ $(document).ready(function(){
                     title: response.message,
                 });
 
-                $("#mdEditSubkontraktor").modal("hide"); // Tutup modal
+                $("#mdEditJabatan").modal("hide"); // Tutup modal
                 resetFieldTutupModalEdit();
-                tableKontraktor.ajax.reload(); // Reload data dari server
+                tableJabatan.ajax.reload(); // Reload data dari server
             },
             error: function (xhr) {
                 // Tampilkan pesan error dari server
@@ -278,7 +278,7 @@ $(document).ready(function(){
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: `/subkontraktor/delete/${id}`, // Ganti dengan endpoint yang sesuai
+                    url: `/jabatan/delete/${id}`, // Ganti dengan endpoint yang sesuai
                     type: "DELETE",
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") // Ambil token CSRF dari meta tag
@@ -292,7 +292,7 @@ $(document).ready(function(){
                                 popup: 'animated fadeOut' // Animasi keluar
                             }
                         });
-                        tableKontraktor.ajax.reload(); // Reload DataTable setelah penghapusan
+                        tableJabatan.ajax.reload(); // Reload DataTable setelah penghapusan
                     },
                     error: function () {
                         Swal.fire({

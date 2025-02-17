@@ -58,4 +58,18 @@ class SubkontraktorController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Data Sub Kontraktor Berhasil Disimpan']);
     }
+
+    public function delete($id)
+    {
+        $subkontraktor = Subkontraktor::where('id', $id)->first();
+
+        if ($subkontraktor) {
+            Subkontraktor::where('id', $id)
+                ->update([
+                    'status' => 0,
+                ]);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Data Sub Kontraktor Berhasil Dihapus']);
+    }
 }
