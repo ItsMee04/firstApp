@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('jabatan_id');
             $table->string('kontak', 100);
             $table->text('alamat');
-            $table->string('image', 100);
+            $table->string('image', 100)->nullable();
             $table->integer('status')->unsigned()->nullable()->default(12);
             $table->timestamps();
             $table->softDeletes();

@@ -10,7 +10,7 @@ class JabatanController extends Controller
 {
     public function getJabatan()
     {
-        $jabatan = Jabatan::where('status', 1)->get();
+        $jabatan = Jabatan::where('status', 1)->where('jabatan', '!=', 'SUPER ADMIN')->get();
 
         return response()->json(['success' => true, 'message' => 'Data Jabatan Berhasil Ditemukan', 'Data' => $jabatan]);
     }

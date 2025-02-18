@@ -90,3 +90,4 @@ Route::get('/pegawai', function () {
     return view('Pages.Management.pegawai');
 });
 Route::get('/pegawai/getPegawai', [PegawaiController::class, 'getPegawai']);
+Route::get('/pegawai', [PegawaiController::class, 'store']);

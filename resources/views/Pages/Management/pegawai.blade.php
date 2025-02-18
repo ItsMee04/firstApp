@@ -76,14 +76,14 @@
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">NIP PEGAWAI</label>
+                                    <label>NIP PEGAWAI</label>
                                     <input type="text" name="nip" class="form-control" placeholder="Masukan NIP"
                                         required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">NAMA PEGAWAI</label>
+                                    <label>NAMA PEGAWAI</label>
                                     <input type="text" name="nama" class="form-control" placeholder="Masukan Nama"
                                         required>
                                 </div>
@@ -93,7 +93,7 @@
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">JENIS KELAMIM PEGAWAI</label>
+                                    <label>JENIS KELAMIM PEGAWAI</label>
                                     <select class="form-control select2bs4" style="width: 100%;" name="jeniskelamin"
                                         aria-placeholder="Pilih Jenis Kelamin" required>
                                         <option value="Laki-Laki">Laki-Laki</option>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">AGAMA PEGAWAI</label>
+                                    <label>AGAMA PEGAWAI</label>
                                     <select class="form-control select2bs4" style="width: 100%;" name="agama"
                                         aria-placeholder="Pilih Agama" required>
                                         <option value="ISLAM">ISLAM</option>
@@ -122,14 +122,14 @@
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">TEMPAT LAHIR PEGAWAI</label>
+                                    <label>TEMPAT LAHIR PEGAWAI</label>
                                     <input type="text" name="tempat" class="form-control"
                                         placeholder="Masukan Tempat Lahir" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">TANGGAL LAHIR PEGAWAI</label>
+                                    <label>TANGGAL LAHIR PEGAWAI</label>
                                     <input type="date" name="tanggal" class="form-control"
                                         placeholder="Masukan Tanggal Lahir" required>
                                 </div>
@@ -139,27 +139,23 @@
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">JABATAN PEGAWAI</label>
-                                    <select class="form-control select2bs4" style="width: 100%;" name="jabatan" required>
-                                        <option value="1"> DIREKTUR</option>
-                                        <option value="8"> MARKETING</option>
-                                        <option value="9"> KEUANGAN</option>
-                                        <option value="11"> PRODUKSI</option>
-                                        <option value="12"> PERPAJAKAN</option>
-                                        <option value="13"> ADMINISTRASI</option>
-                                        <option value="15"> STAFF</option>
-                                        <option value="16"> KOMISARIS</option>
-                                        <option value="17"> KELEMBAGAAN</option>
+                                    <label>JABATAN PEGAWAI</label>
+                                    <select class="form-control select2bs4" style="width: 100%;" name="jabatan"
+                                        id="jabatan" required>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">KONTAK PEGAWAI</label>
-                                    <input type="text" name="kontak" class="form-control"
-                                        placeholder="Masukan Kontak" required>
+                                    <label>KONTAK PEGAWAI</label>
+                                    <input type="text" name="kontak" class="form-control" placeholder="Masukan Kontak"
+                                        required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>ALAMAT PEGAWAI</label>
+                            <textarea class="form-control" rows="4" name="alamat" placeholder="Masukan Alamat" required></textarea>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -168,9 +164,9 @@
                                     <label>Foto</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="foto" class="custom-file-input"
-                                                id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile bg-green">Choose
+                                            <input type="file" name="image" class="custom-file-input"
+                                                id="image">
+                                            <label class="custom-file-label">Choose
                                                 file</label>
                                         </div>
                                         <div class="input-group-append">
@@ -182,17 +178,11 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">STATUS</label>
-                                    <select class="form-control select2bs4" style="width: 100%;" name="status" required>
-                                        <option value="AKTIF"> AKTIF</option>
-                                        <option value="NON AKTIF"> NON AKTIF</option>
-                                    </select>
+                                    <div class="img-square img-fluid text-center" id="preview">
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">ALAMAT PEGAWAI</label>
-                            <textarea class="form-control" rows="4" name="alamat" placeholder="Masukan Alamat" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -243,5 +233,7 @@
 
     <!-- jQuery -->
     <script src="{{ asset('assets') }}/plugins/jquery/jquery.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('assets') }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <script src="{{ asset('assets') }}/js/pegawai.js"></script>
 @endsection

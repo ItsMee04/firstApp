@@ -1,9 +1,13 @@
 $(document).ready(function () {
     loadPegawai();
+    uploadImage()
+    resetFieldTutupModalTambah()
     // Inisialisasi Select2 dengan tema Bootstrap 4
     $('.select2bs4').select2({
         theme: 'bootstrap4'
     });
+
+    bsCustomFileInput.init();
 
     // Inisialisasi tooltip Bootstrap
     function initializeTooltip() {
@@ -59,7 +63,7 @@ $(document).ready(function () {
                         return `<b>${data}</b>`; // Menjadikan teks lokasi tebal
                     },
                 },
-                
+
                 {
                     data: "nama",
                     className: "text-center",
@@ -67,7 +71,7 @@ $(document).ready(function () {
                         return `<b>${data}</b>`; // Menjadikan teks lokasi tebal
                     },
                 },
-                
+
                 {
                     data: "jabatan.jabatan",
                     className: "text-center",
@@ -116,9 +120,28 @@ $(document).ready(function () {
         });
     }
 
+    // Fungsi untuk memuat data jabatan
+    function loadJabatan() {
+        $.ajax({
+            url: "/jabatan/getJabatan", // Endpoint untuk mendapatkan data jabatan
+            type: "GET",
+            success: function (response) {
+                let options = '<option value="">-- Pilih Jabatan --</option>';
+                response.Data.forEach((item) => {
+                    options += `<option value="${item.id}">${item.jabatan}</option>`;
+                });
+                $("#jabatan").html(options); // Masukkan data ke select
+            },
+            error: function () {
+                alert("Gagal memuat data jabatan!");
+            },
+        });
+    }
+
     //ketika menekan tombol tambah role
     $(".btn-tambahPegawai").on("click", function () {
         $("#mdTambahPegawai").modal("show");
+        loadJabatan();
     });
 
     // Ketika modal ditutup, reset semua field
@@ -126,6 +149,7 @@ $(document).ready(function () {
         $("#mdTambahPegawai").on("hidden.bs.modal", function () {
             // Reset form input (termasuk gambar dan status)
             $("#storePegawai")[0].reset();
+            $("#preview").empty();
         });
     }
 
@@ -181,23 +205,24 @@ $(document).ready(function () {
         });
     });
 
-    //ini saat input
-    const imgInput = document.getElementById("image");
-    const previewImage = document.getElementById("preview");
+    function uploadImage() {
+        //ini saat input
+        const imgInput = document.getElementById("image");
+        const previewImage = document.getElementById("preview");
 
-    imgInput.addEventListener("change", () => {
-        const file = imgInput.files[0];
-        const reader = new FileReader();
+        imgInput.addEventListener("change", () => {
+            const file = imgInput.files[0];
+            const reader = new FileReader();
 
-        reader.addEventListener("load", () => {
-            previewImage.innerHTML = "";
-            const img = document.createElement("img");
-            img.src = reader.result;
+            reader.addEventListener("load", () => {
+                previewImage.innerHTML = "";
+                const img = document.createElement("img");
+                img.src = reader.result;
 
-            previewImage.appendChild(img);
+                previewImage.appendChild(img);
+            });
+
+            reader.readAsDataURL(file);
         });
-
-        reader.readAsDataURL(file);
-    });
-    //ini saat input
+    }
 })
